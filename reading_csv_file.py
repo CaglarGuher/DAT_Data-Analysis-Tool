@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import QInputDialog, QFileDialog ,QApplication , QDialog
 
 from Df_adjusting_process import DataFrameModel
 
-class Entry(QThread):
+class Entry(object):
 
        
     
