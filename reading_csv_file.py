@@ -73,15 +73,15 @@ class Entry(object):
 
         
         self.MainWindow1 = QtWidgets.QMainWindow()
-        self.ui = Result(self.filename[0])
+        self.ui = DOC_SHOW_DATAFRAME()
         self.ui.setupUi(self.MainWindow1)
         self.MainWindow1.show()
-        MainWindow.close()
+              
 
 
 
         
-class Result(object):
+class Show_DataFrame(object):
 
     def __init__(self, df = str):
 
@@ -128,6 +128,29 @@ class Result(object):
 
 
 
+class DOC_SHOW_DATAFRAME(object):
+    def setupUi(self, Widget):
+        Widget.setObjectName("Widget")
+        Widget.resize(255, 169)
+        self.pushButton = QtWidgets.QPushButton(Widget)
+        self.pushButton.setGeometry(QtCore.QRect(20, 40, 201, 24))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(Widget)
+        self.pushButton_2.setGeometry(QtCore.QRect(20, 100, 201, 24))
+        self.pushButton_2.setObjectName("pushButton_2")
+
+        self.retranslateUi(Widget)
+        QtCore.QMetaObject.connectSlotsByName(Widget)
+
+    def retranslateUi(self, Widget):
+        _translate = QtCore.QCoreApplication.translate
+        Widget.setWindowTitle(_translate("Widget", "Widget"))
+        self.pushButton.setText(_translate("Widget", "Show Dataframe"))
+        self.pushButton_2.setText(_translate("Widget", "Document The Data"))
+
+
+
+
 
 
 
@@ -139,4 +162,18 @@ if __name__ == "__main__":
     ui = Entry()
     ui.setupUi(MainWindow)
     MainWindow.show()
+    sys.exit(app.exec_())
+
+
+
+
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Widget = QtWidgets.QWidget()
+    ui = DOC_SHOW_DATAFRAME()
+    ui.setupUi(Widget)
+    Widget.show()
     sys.exit(app.exec_())
