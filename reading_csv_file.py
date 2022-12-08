@@ -73,20 +73,23 @@ class Entry(object):
 
         
         self.MainWindow1 = QtWidgets.QMainWindow()
-        self.ui = DOC_SHOW_DATAFRAME()
+        self.ui = DOC_SHOW_DATAFRAME(self.filename[0])
         self.ui.setupUi(self.MainWindow1)
         self.MainWindow1.show()
-              
+         
+        MainWindow.close()
+
+    
 
 
 
         
 class Show_DataFrame(object):
 
-    def __init__(self, df = str):
+    def __init__(self, df_path = str):
 
 
-        self.df = df
+        self.df = df_path
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -97,9 +100,6 @@ class Show_DataFrame(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setObjectName("lineEdit")
-        self.verticalLayout.addWidget(self.lineEdit)
         self.tableView = QtWidgets.QTableView(self.centralwidget)
         self.tableView.setObjectName("tableView")
         self.verticalLayout.addWidget(self.tableView)
@@ -129,6 +129,14 @@ class Show_DataFrame(object):
 
 
 class DOC_SHOW_DATAFRAME(object):
+
+    def __init__(self,df_path):
+
+
+        self.df_path = df_path
+
+
+
     def setupUi(self, Widget):
         Widget.setObjectName("Widget")
         Widget.resize(255, 169)
@@ -142,11 +150,26 @@ class DOC_SHOW_DATAFRAME(object):
         self.retranslateUi(Widget)
         QtCore.QMetaObject.connectSlotsByName(Widget)
 
+
+        self.pushButton.clicked.connect(self.show_dataframe)
+
+
     def retranslateUi(self, Widget):
         _translate = QtCore.QCoreApplication.translate
         Widget.setWindowTitle(_translate("Widget", "Widget"))
         self.pushButton.setText(_translate("Widget", "Show Dataframe"))
         self.pushButton_2.setText(_translate("Widget", "Document The Data"))
+
+
+    def show_dataframe(self):
+
+        self.MainWindow2 = QtWidgets.QMainWindow()
+        self.ui = Show_DataFrame(self.df_path)
+        self.ui.setupUi(self.MainWindow2)
+        self.MainWindow2.show()
+         
+        MainWindow.close()
+
 
 
 
