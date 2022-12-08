@@ -1,10 +1,4 @@
-# -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'upload_window.ui'
-#
-# Created by: PyQt5 UI code generator 5.12.3
-#
-# WARNING! All changes made in this file will be lost!
 
 import pandas as pd
 from PyQt5 import QtCore, QtGui, QtWidgets
