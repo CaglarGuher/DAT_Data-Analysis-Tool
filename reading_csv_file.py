@@ -8,6 +8,8 @@ from PyQt5.QtWidgets import QInputDialog, QFileDialog ,QApplication , QDialog
 
 from Df_adjusting_process import DataFrameModel
 
+from Document_Info import DOCUMENT_DOCX as DD
+
 class Entry(object):
 
        
@@ -146,7 +148,7 @@ class DOC_SHOW_DATAFRAME(object):
 
 
         self.pushButton.clicked.connect(self.show_dataframe)
-
+        self.pushButton_2.clicked.connect(self.document_data)
 
     def retranslateUi(self, Widget):
         _translate = QtCore.QCoreApplication.translate
@@ -163,6 +165,16 @@ class DOC_SHOW_DATAFRAME(object):
         self.MainWindow2.show()
          
         MainWindow.close()
+
+
+    def document_data(self):
+        DOC = DD(self.df_path)
+        DOC.set_up_parahraph()
+        DOC.document_columns()
+        DOC.document_dtype()
+        DOC.document_dfinfo()
+        DOC.save_document()
+
 
 
 
